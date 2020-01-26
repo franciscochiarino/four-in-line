@@ -174,10 +174,9 @@ function findDiagonalLineSENW() {
         stringPatterns.forEach(n => {
             // console.log(board[n[0]][n[1]]);
         })
-        
+
         // console.log(stringPatterns)
     })
     
 }
 
-findDiagonalLineSENW();
