@@ -1,3 +1,4 @@
+
 const board = [
     document.querySelectorAll('.row-00'),
     document.querySelectorAll('.row-01'),
@@ -9,10 +10,19 @@ const board = [
 
 const spaces = document.querySelectorAll('.space');
 
-for (let i = 0; i < spaces.length; i++) {
-    spaces[i].addEventListener('click', function() {
-        let space = spaces[i].id;
-        console.log(space)  
-    })
+spaces.forEach(space => space.addEventListener('click', () => {
+
+    // Find which space was clicked
+    let spaceID = space.id;
+
+    // Draw smth in space
+    draw(spaceID);
+
+}));
+
+function draw(id) {
+    const space = document.getElementById(id);
+    space.style.backgroundColor = 'var(--pink)';
     
 }
+

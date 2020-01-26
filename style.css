@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+:root {
+    --violet: #413387;
+    --skyblue: #74cbdd;
+    --yellow: #fff547;
+    --pink: #e73886;
+    --green: #2e914a;
+}
+
 html {
     font-size: 100%;
 }
@@ -13,10 +21,13 @@ html {
     height: 700px;
     display: grid;
     grid-template: repeat(6, 1fr) / repeat(6, 1fr);
+    background-color: var(--violet);
 }
 
 .space {
-    border: 1px solid black;
+    border: 15px solid var(--violet);
+    border-radius: 50%;
+    background-color: #fff;
 }
 
 section {
