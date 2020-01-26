@@ -37,14 +37,17 @@ const board = [
 // Diagonal winning positions (south east to north west)
 // 35, 24, 13, 02
 // 45, 34, 23, 12
-// 32, 23, 12, 01
+// 34, 23, 12, 01
 // 55, 44, 33, 22
 // 44, 33, 22, 11
 // 33, 22, 11, 00
 // 54, 43, 32, 21
 // 43, 32, 21, 10
 // 53, 42, 31, 20
-// The pattern here is 11. If we take out 9 from the first number, then we get the second, and so on.
+// The pattern here is 11. If we take out 11 from the first number, then we get the second, and so on.
+// If you look carefully, we can order this numbers the following way: 33, 34, 35, 43, 44, 45, 53, 54, 55
+// If we take out 11 to each number in this new order for 3 times, we get all patterns.
+
 
 // In the following function I am going to try to look for all the possiblities to find a horizontal line of four.
 function findHorizontalLine() {
@@ -92,3 +95,89 @@ function findVerticalLine() {
     }
 }
 
+// In the following function I am going to try to look for all the possiblities to find a diagonal line of four, from SW to NE.
+const diagonalPatternA = [30, 31, 32, 40, 41, 42, 50, 51, 52];
+
+function findDiagonalLineSWNE() {
+
+    // Iterate through diagonalPatternA:
+    diagonalPatternA.forEach(element => {
+
+        // Create patterns array:
+        const patterns = [];
+
+        // Store patters into samller arrays:
+        for (let i = 0; i <= 3; i++) {
+            patterns.push(element);
+            element -= 9;
+        }
+
+        // Turns elements of patterns to string:
+        const stringPatterns = patterns.map(number => {
+                
+            let string = '';
+
+            if (number < 10) {
+                string = '0' + number.toString()
+            } else {
+                string = number.toString()
+            }
+
+            return string;
+
+        });
+
+        // Check stringPatterns on the board:
+        stringPatterns.forEach(n => {
+            // console.log(board[n[0]][n[1]]);
+        })
+
+        // console.log(patterns);
+        // console.log(stringPatterns)
+    })
+    
+}
+
+// In the following function I am going to try to look for all the possiblities to find a diagonal line of four, from SE to NW.
+const diagonalPatternB = [33, 34, 35, 43, 44, 45, 53, 54, 55];
+
+function findDiagonalLineSENW() {
+
+    // Iterate through diagonalPatternA:
+    diagonalPatternB.forEach(element => {
+
+        // Create patterns array:
+        const patterns = [];
+
+        // Store patters into samller arrays:
+        for (let i = 0; i <= 3; i++) {
+            patterns.push(element);
+            element -= 11;
+        }
+
+        // Turns elements of patterns to string:
+        const stringPatterns = patterns.map(number => {
+                
+            let string = '';
+
+            if (number < 10) {
+                string = '0' + number.toString()
+            } else {
+                string = number.toString()
+            }
+
+            return string;
+
+        });
+
+        // Check stringPatterns on the board:
+        stringPatterns.forEach(n => {
+            // console.log(board[n[0]][n[1]]);
+        })
+        
+        // console.log(stringPatterns)
+    })
+    
+}
+
+findDiagonalLineSENW();
