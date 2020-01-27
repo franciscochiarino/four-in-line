@@ -15,10 +15,13 @@ spaces.forEach(space => space.addEventListener('click', () => {
     // Store id number of clicked space
     let spaceIdNumber = space.id;
 
-    // Draw smth in space
+    // Run functions
     userMove(spaceIdNumber);
+    horizontalScanner();
 
 }));
+
+// Functions
 
 function userMove(idNumber) {
 
@@ -35,4 +38,23 @@ function userMove(idNumber) {
     }
     
 }
+
+function horizontalScanner() {
+
+    let counter = 0;
+
+    for (let row = 5; row >= 0; row--) {
+
+        for (let column = 0; column <= 5; column++) {
+            
+            let space = document.getElementById(`${row}${column}`);
+            (space.className.includes('clicked')) ? counter++ : counter = 0;
+
+            if (counter === 4) {
+                console.log(`TODO: Win Message`);
+                break;
+            }
+        }
+    }
+};
 
